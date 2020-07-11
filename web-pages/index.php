@@ -9,7 +9,7 @@
 
 <pre>
 <?php
-print `ip a`;
+print `ifconfig`;
 
 ?>
 </pre>
