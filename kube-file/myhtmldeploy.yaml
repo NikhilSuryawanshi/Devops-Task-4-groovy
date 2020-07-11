@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mydeploy
+  labels:
+    app: mydeploy
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: mydeploy
+    tier: frontend
+  type: NodePort
+kind: Deployment
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app:  mydeploy
+        tier: frontend
+    spec:
+      containers:
+      - image: httpd
+        name: mydeploy
+        ports:
+        - containerPort: 80
+          name: mydeploy
+        volumeMounts:
+        - name: mydeploy-pvc-storage
+          mountPath: /usr/local/apache2/htdocs/
+      volumes:
+      - name: mydeploy-pvc-storage
+        persistentVolumeClaim:
+          claimName: mydeploy-pv-storage
