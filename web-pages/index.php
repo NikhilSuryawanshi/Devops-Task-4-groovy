@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to the Cloud </title>
+    <title>Welcome to the kubernetes </title>
   </head>
 <body>
 
@@ -9,10 +9,8 @@
 
 <pre>
 <?php
+print(`ip a`);
 
-$file = file_get_contents('url.txt');
-
-echo '<img src="'.$file.'"  width="500" height="600">';
 ?>
 </pre>
 
