@@ -7,29 +7,17 @@ metadata:
 spec:
   ports:
     - port: 80
-      nodePort: 32000
   selector:
     app: mydeploy
     tier: frontend
   type: NodePort
----
-apiVersion: apps/v1
 kind: Deployment
-metadata:
-  name: mydeploy
-  labels:
-    app: mydeploy
-spec:
-  selector:
-    matchLabels:
-      app: mydeploy
-      tier: frontend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: mydeploy
+        app:  mydeploy
         tier: frontend
     spec:
       containers:
